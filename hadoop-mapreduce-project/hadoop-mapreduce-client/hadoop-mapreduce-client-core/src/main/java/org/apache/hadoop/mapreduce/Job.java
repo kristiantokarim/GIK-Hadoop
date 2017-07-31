@@ -1365,6 +1365,7 @@ public class Job extends JobContextImpl implements JobContext {
             StringUtils.formatPercent(reduceProgress(), 0));
       if (!report.equals(lastReport)) {
         LOG.info(report);
+        LOG.info("RUNNING JOB");
         lastReport = report;
       }
 
