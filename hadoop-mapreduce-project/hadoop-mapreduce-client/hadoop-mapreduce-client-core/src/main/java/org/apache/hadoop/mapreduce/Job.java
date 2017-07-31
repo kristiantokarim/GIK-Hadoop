@@ -1376,6 +1376,7 @@ public class Job extends JobContextImpl implements JobContext {
     boolean success = isSuccessful();
     if (success) {
       LOG.info("Job " + jobId + " completed successfully");
+      LOG.info("FINISH JOB");
     } else {
       LOG.info("Job " + jobId + " failed with state " + status.getState() + 
           " due to: " + status.getFailureInfo());
