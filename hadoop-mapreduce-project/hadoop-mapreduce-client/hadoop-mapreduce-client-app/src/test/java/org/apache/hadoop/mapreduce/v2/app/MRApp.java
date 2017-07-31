@@ -615,7 +615,9 @@ public class MRApp extends MRAppMaster {
       @SuppressWarnings("deprecation")
       @Override
       public void cleanupJob(JobContext jobContext) throws IOException {
+        LOG.info("CLEANUP STARTED YOW-MRAPP");
         committer.cleanupJob(jobContext);
+        LOG.info("CLEANUP FINISH YOW-MRAPP");
       }
       @Override
       public void commitJob(JobContext jobContext) throws IOException {

@@ -610,6 +610,7 @@ public class JobHistoryEventHandler extends AbstractService
           mi.getJobIndexInfo().setJobStatus(JobState.SUCCEEDED.toString());
           closeEventWriter(event.getJobID());
           processDoneFiles(event.getJobID());
+          LOG.info("JOB FINISH YOW IF - JOB HISTORY EVENT HANDLER");
         } catch (IOException e) {
           throw new YarnRuntimeException(e);
         }
@@ -818,6 +819,7 @@ public class JobHistoryEventHandler extends AbstractService
         tEntity.addEvent(tEvent);
         tEntity.setEntityId(jobId.toString());
         tEntity.setEntityType(MAPREDUCE_JOB_ENTITY_TYPE);
+        LOG.info("JOB FINISH YOW - JOB HISTORY EVENT HANDLER");
         break;
       case TASK_STARTED:
         TaskStartedEvent tse = (TaskStartedEvent) event;
