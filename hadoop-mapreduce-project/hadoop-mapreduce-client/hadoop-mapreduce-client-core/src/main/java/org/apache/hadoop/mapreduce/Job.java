@@ -1360,12 +1360,11 @@ public class Job extends JobContextImpl implements JobContext {
         LOG.info("Job " + jobId + " running in uber mode : " + isUber());
       }      
       String report = 
-        (" map " + StringUtils.formatPercent(mapProgress(), 0)+
+        (" map gan " + StringUtils.formatPercent(mapProgress(), 0)+
             " reduce " + 
             StringUtils.formatPercent(reduceProgress(), 0));
       if (!report.equals(lastReport)) {
         LOG.info(report);
-        System.out.println("RUNNING JOB");
         lastReport = report;
       }
 
