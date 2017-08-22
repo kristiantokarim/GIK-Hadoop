@@ -169,7 +169,7 @@ public class JobClient extends CLI {
    * remote service to provide certain functionality.
    */
   static class NetworkedJob implements RunningJob {
-    Job job;
+    public Job job;
     /**
      * We store a JobProfile and a timestamp for when we last
      * acquired the job profile.  If the job is null, then we cannot
@@ -193,7 +193,9 @@ public class JobClient extends CLI {
     public Configuration getConfiguration() {
       return job.getConfiguration();
     }
-
+    public long getLastReduceTaskTime() {
+      return job.lastReduceTaskTime;
+    }
     /**
      * An identifier for the job
      */

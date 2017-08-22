@@ -99,7 +99,7 @@ public class Job extends JobContextImpl implements JobContext {
   public static final String SUBMIT_REPLICATION = 
     "mapreduce.client.submit.file.replication";
   public static final int DEFAULT_SUBMIT_REPLICATION = 10;
-
+  public static long lastReduceTaskTime = 0;
   @InterfaceStability.Evolving
   public static enum TaskStatusFilter { NONE, KILLED, FAILED, SUCCEEDED, ALL }
 
@@ -1360,7 +1360,7 @@ public class Job extends JobContextImpl implements JobContext {
         LOG.info("Job " + jobId + " running in uber mode : " + isUber());
       }      
       String report = 
-        (" map gan " + StringUtils.formatPercent(mapProgress(), 0)+
+        (" map " + StringUtils.formatPercent(mapProgress(), 0)+
             " reduce " + 
             StringUtils.formatPercent(reduceProgress(), 0));
       if (!report.equals(lastReport)) {
@@ -1376,7 +1376,6 @@ public class Job extends JobContextImpl implements JobContext {
     boolean success = isSuccessful();
     if (success) {
       LOG.info("Job " + jobId + " completed successfully");
-      LOG.info("FINISH JOB");
     } else {
       LOG.info("Job " + jobId + " failed with state " + status.getState() + 
           " due to: " + status.getFailureInfo());

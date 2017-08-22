@@ -600,7 +600,6 @@ public class JobHistoryEventHandler extends AbstractService
 
       // If this is JobFinishedEvent, close the writer and setup the job-index
       if (event.getHistoryEvent().getEventType() == EventType.JOB_FINISHED) {
-        LOG.info("JOB FINISH - CLEANUP STARTED");
         try {
           JobFinishedEvent jFinishedEvent =
               (JobFinishedEvent) event.getHistoryEvent();
