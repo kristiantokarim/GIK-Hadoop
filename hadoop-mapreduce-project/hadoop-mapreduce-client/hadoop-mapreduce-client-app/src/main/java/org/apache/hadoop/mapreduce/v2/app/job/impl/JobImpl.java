@@ -1931,8 +1931,8 @@ public class JobImpl implements org.apache.hadoop.mapreduce.v2.app.job.Job,
       JobTaskEvent taskEvent = (JobTaskEvent) event;
       Task task = job.tasks.get(taskEvent.getTaskID());
       if (taskEvent.getState() == TaskState.SUCCEEDED) {
-        if (job.completedTaskCount == tasks.size()) {
-          this.lastReduceTaskTime = clock.getTime();
+        if (job.completedTaskCount == job.tasks.size()) {
+          job.lastReduceTaskTime = job.clock.getTime();
         }
         taskSucceeded(job, task);
       } else if (taskEvent.getState() == TaskState.FAILED) {
